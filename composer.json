@@ -1,4 +1,16 @@
 {
+    "name": "daveross/RestServer",
+    "description": "Socket-based PHP REST Server Microframework",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dave Ross",
+            "email": "dave@davidmichaelross.com",
+            "homepage": "http://davidmichaelross.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "ext-sockets": "*",
         "php": ">=5.6"
