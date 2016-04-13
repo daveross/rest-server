@@ -17,6 +17,6 @@
     },
     "autoload": {
         "psr-4": {"DaveRoss\\RestServer\\": "src/"},
-        "files": ["src/util.php"]
+	"files": ["src/restServer.php", "src/util.php"]
     }
 }
