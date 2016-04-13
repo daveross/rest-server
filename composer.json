@@ -1,5 +1,5 @@
 {
-    "name": "daveross/RestServer",
+    "name": "daveross/rest-server",
     "description": "Socket-based PHP REST Server Microframework",
     "license": "MIT",
     "type": "library",
