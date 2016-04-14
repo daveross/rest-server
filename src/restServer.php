@@ -24,10 +24,10 @@ function restServer($port, callable $fn, $host = '127.0.0.1', $maxRequestSize = 
             $restRequest->setPayload($input2, RestRequest::FORMAT_JSON);
         }
 
-        $output = $fn($restRequest, new RestResponse());
+        $output = formatOutput($fn($restRequest, new RestResponse()));
         socket_write(
             $spawn, 
-            is_scalar($output) ? $output : json_encode($output), 
+            $output, 
             strlen($output) + 1
         ) or die("Could not write output\n");
 
