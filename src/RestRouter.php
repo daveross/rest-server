@@ -19,11 +19,13 @@ class RestRouter {
     }
     
     public function __invoke(RestRequest $request, RestResponse $response) {
-        
+
         if(isset($this->routes[strtolower($request->method)][$request->path])) {
             return $this->routes[strtolower($request->method)][$request->path]($request, $response);
         }
 
+        $response->statusCode = 404;
+        $response->statusDescription = 'Not Found';
         return $response;
                 
     }
