@@ -25,7 +25,11 @@ function restServer($port, callable $fn, $host = '127.0.0.1', $maxRequestSize = 
         }
 
         $output = $fn($restRequest, new RestResponse());
-        socket_write($spawn, json_encode($output), strlen($output) + 1) or die("Could not write output\n");
+        socket_write(
+            $spawn, 
+            is_scalar($output) ? $output : json_encode($output), 
+            strlen($output) + 1
+        ) or die("Could not write output\n");
 
         socket_close($spawn);
         
