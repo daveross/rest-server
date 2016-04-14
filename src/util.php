@@ -16,6 +16,11 @@ function array_last(array $arr) {
     return end($arr);
 }
 
+/**
+ * Format a response 
+ * @param mixed $output RestResponse|string|array|object
+ * @return string
+ */
 function formatOutput($output) {
     
         if($output instanceof RestResponse) {
