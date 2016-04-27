@@ -26,7 +26,8 @@ function handleRequest( RestRequest $request, RestResponse $response ) {
   return $response;
 }
 
-restServer( 8000, 'handleRequest' );```
+restServer( 8000, 'handleRequest' );
+```
 
 ### RestRequest
 
