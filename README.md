@@ -3,6 +3,12 @@
 
 So many PHP frameworks assume they're running behind a web server like Apache or Nginx. This framework functions more like Express from the node.js community. Code listens on a TCP port and handles HTTP requests directly. This allows for efficient processing and lightweight setup.
 
+## LICENSE
+
+MIT
+
+See [why I write open source software](https://medium.com/@csixty4/why-i-write-open-source-software-6d3569c85e64#.wxpsw8u2m)
+
 ## Usage
 
 All code uses `namespace DaveRoss\RestServer`.
@@ -48,9 +54,29 @@ A `RestResponse` has four public variables for sending a response back to the re
 * `$headers` is an array of HTTP headers sent with the response
 * `$payload` is the body of the response
 
-There are also sonme convenience methods defined on RestResponse:
+There are also some convenience methods defined on RestResponse:
 
 * `setStatusCode*($code)` takes a status code (ex. 200) and sets both the code & its statusDescription
 * `header($key, $value)` sets a new HTTP header on the response
 * `setPayload($payload, $format)` sets the response body. If `$format` is `RestResponse::FORMAT_TEXT`, the `$payload` is used as-is. If it's `RestResponse::FORMAT_JSON`, the `$payload` is JSON-encoded first.
 
+### Using a RestRouter
+
+A `RestRouter` can be used in place of a handler function when calling `restServer`. It allows multiple GET and POST paths to be defined and automatically handles sending a 404 response for unrecognizede paths. For example:
+
+```php
+function handleRequest( RestRequest $request, RestResponse $response ) {
+  // do something
+  return $response;
+}
+
+$router = new RestRouter();
+$router->get('hello-world', 'handleRequest');
+restServer(8000, $router);
+```
+
+To use a `RestRouter`, instantiate a new instance of `RestRouter()` and call these methods to configure paths:
+
+* `get($path, callable $fn)`
+* `post($path, callable $fn)`
+* 
