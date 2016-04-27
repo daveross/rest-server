@@ -79,4 +79,3 @@ To use a `RestRouter`, instantiate a new instance of `RestRouter()` and call the
 
 * `get($path, callable $fn)`
 * `post($path, callable $fn)`
-* 
